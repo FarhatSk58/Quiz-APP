@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Demo</title>
+    </head>
+    <body>
+        <button onclick=load()>Get started</button>
+        <p id="dataele">This is original</p>
+    </body>
+
+    <script>
+        let data = document.getElementById('dataele');
+
+        function load(){
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET','test.txt',true);
+            xhr.send();
+            xhr.onprogress = function(){
+                data.innerText = "loading"
+            }
+            xhr.onload = function(){
+                data.innerText = xhr.responseText
+            }
+        }
+    </script>
+</html>
